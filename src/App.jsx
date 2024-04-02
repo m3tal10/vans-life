@@ -1,24 +1,27 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route,Link } from "react-router-dom"
-import Home from './Pages/Home';
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import Home from './Pages/Home'
 import About from './Pages/About'
+import Vans from './Pages/Vans';
+import VanDetails from './Pages/VanDetails';
 import './App.css'
-
+import "./Server"
+import Layout from "./components/Layout"
 function App() {
   return (
     <>
-    <BrowserRouter>
-    <header>
-        <Link className="site-logo" to="/">#VanLife</Link>
-        <nav>
-          <Link to="/about">About</Link>
-        </nav>
-      </header>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-      </Routes>
-    </BrowserRouter>
+      <BrowserRouter>
+
+        <Routes>
+          <Route element={<Layout/>}>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/vans" element={<Vans />} />
+            <Route path="/vans/:id" element={<VanDetails />} />
+          </Route>
+
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }
